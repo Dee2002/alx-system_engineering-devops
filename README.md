@@ -1,1 +1,1 @@
-# alx-system_engineering-devops
+Script to print absolute path name
