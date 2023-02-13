@@ -1,0 +1,4 @@
+#!/bin/bash
+==> standard input <==
+head -3 iacta
+head -3 iacta
