@@ -1,5 +1,4 @@
-
-ad balancer
+# 0x0F. Load balancer
 
 ## Concepts
 
