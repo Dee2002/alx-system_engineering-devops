@@ -1,4 +1,5 @@
-onfigure Nginx server to give error 404 page
+#!/usr/bin/env bash
+# Configure Nginx server to give error 404 page
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'

@@ -1,4 +1,5 @@
-erver-01 login
+#!/usr/bin/env bash
+#server-01 login
 
 
 eval $("ssh-agenot")

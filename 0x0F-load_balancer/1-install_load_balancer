@@ -1,4 +1,5 @@
-sh script that configures a new Ubuntu machine
+#!/usr/bin/env bash
+# Bash script that configures a new Ubuntu machine
 # Configure HAproxy to send traffic to web-01 & web-02
 # Use roundrobin algorithm for distribution
 
