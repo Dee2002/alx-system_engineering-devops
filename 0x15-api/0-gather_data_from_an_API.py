@@ -1,40 +1,40 @@
 #!/usr/bin/python3
-# Write a Python script that, using this REST API, for a given
-# employee ID, returns information about his/her Todo list progress.
-
 import requests
-import sys
+from sys import argv
+
+
+def gather_data(employee_id):
+    """
+    Retrieves and displays TODO list progress for a given employee ID.
+
+    Args:
+        employee_id (int): The ID of the employee.
+
+    Returns:
+        None
+    """
+    url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
+    response = requests.get(url)
+    todos = response.json()
+
+    if not todos:
+        print("Employee not found")
+        return
+
+    employee_name = todos[0]['username']
+    total_tasks = len(todos)
+    completed_tasks = sum(1 for todo in todos if todo['completed'])
+
+    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    for todo in todos:
+        if todo['completed']:
+            print("\t", todo['title'])
 
 
 if __name__ == "__main__":
-    # Check if the script is provided with an employee ID as a
-    # command-line argument
-    if len(sys.argv) != 2:
-        sys.exit(1)
-
-    employee_ID = sys.argv[1]
-    jsonplaceholder = 'https://jsonplaceholder.typicode.com/users'
-    url = f'{jsonplaceholder}/{employee_ID}'
-
-    # Make a GET request to the API
-    response = requests.get(url)
-
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        employee_name = response.json().get('name')
-        Todourl = f'{url}/todos'
-        res = requests.get(Todourl)
-        tasks = res.json()
-
-        # Filter completed tasks
-        done_tasks = [task for task in tasks if task.get('completed')]
-
-        # Display the employee TODO list progress
-        print("Employee {} is done with tasks({}/{}):".
-              format(employee_name, len(done_tasks), len(tasks)))
-        for task in done_tasks:
-            print("\t{}".format(task.get('title')))
+    if len(argv) != 2:
+        print("Usage: ./0-gather_data_from_an_API.py <employee_id>")
     else:
-        # Display an error message if the request was not successful
-        print(f"Error: Unable to fetch data.
-              Status code: {response.status_code}")
+        employee_id = int(argv[1])
+        gather_data(employee_id)
+
