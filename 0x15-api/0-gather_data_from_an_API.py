@@ -13,7 +13,8 @@ def gather_data(employee_id):
     Returns:
         None
     """
-    url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
+    url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.
+    format(employee_id)
     response = requests.get(url)
     todos = response.json()
 
@@ -25,7 +26,8 @@ def gather_data(employee_id):
     total_tasks = len(todos)
     completed_tasks = sum(1 for todo in todos if todo['completed'])
 
-    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    print("Employee {} is done with tasks({}/{}):".
+          format(employee_name, completed_tasks, total_tasks))
     for todo in todos:
         if todo['completed']:
             print("\t", todo['title'])
@@ -37,4 +39,3 @@ if __name__ == "__main__":
     else:
         employee_id = int(argv[1])
         gather_data(employee_id)
-
