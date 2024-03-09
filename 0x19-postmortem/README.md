@@ -32,4 +32,21 @@ To prevent similar incidents in the future, we have identified several correctiv
 - Conduct regular load testing to ensure load balancer efficiency.
 - Document load balancer configurations and update procedures for increased future clarity and accountability.
 
+                 +-----------------------+
+                 |      Users            |
+                 +-----------+-----------+
+                             |
+                             v
+                  +----------+----------+
+                  |   Load Balancer     |
+                  +----------+----------+
+                             |
+             Misconfigured    |    Corrected Settings
+                Settings     |         ^
+                             v         |
+                  +----------+----------+
+                  | Authentication Service |
+                  +-----------------------+
+
+  
 This comprehensive postmortem provides a detailed analysis of the outage, its root cause, resolution, and measures to prevent future occurrences, thereby ensuring the reliability and stability of our platform.
